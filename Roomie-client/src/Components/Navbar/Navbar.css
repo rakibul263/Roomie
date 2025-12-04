@@ -1,0 +1,14 @@
+.nav-item {
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.nav-item:hover {
+  border-bottom-color: #ca8a5e;
+}
+
+.nav-item.active {
+  border-bottom-color: #ca8a5e;
+  color: #ca8a5e;
+}
