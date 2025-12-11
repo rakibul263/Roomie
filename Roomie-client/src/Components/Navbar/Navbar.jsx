@@ -1,10 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 import logo from "../../assets/roomie.png";
 import "./Navbar.css";
 import img from "../../assets/img.png";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const links = (
     <>
       <li>
@@ -93,8 +94,11 @@ const Navbar = () => {
             </ul>
           </div>
         </div>
-        <button className="btn mx-5 bg-[#CA8A5E] text-white rounded-2xl">
-          Logout
+        <button
+          className="btn mx-5 bg-[#CA8A5E] text-white rounded-2xl"
+          onClick={() => navigate("/register")}
+        >
+          SignUp
         </button>
       </div>
     </div>
