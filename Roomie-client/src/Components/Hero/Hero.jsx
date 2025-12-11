@@ -1,7 +1,9 @@
 import React from "react";
 import hero from "../../assets/Hero.png";
+import { useNavigate } from "react-router";
 
 const Hero = () => {
+  const navigate = useNavigate();
   return (
     <div className="relative">
       <div className="relative max-w-[95%] sm:max-w-[90%] md:max-w-[80%] lg:max-w-[70%] mx-auto mt-10 rounded-4xl overflow-hidden">
@@ -17,7 +19,10 @@ const Hero = () => {
           <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-4 sm:mb-5">
             Find your perfect space. Live comfortably, live happy.
           </p>
-          <button className="bg-amber-400 text-black font-bold px-5 py-2 sm:px-6 sm:py-3 rounded-3xl hover:bg-amber-500 transition">
+          <button
+            className="bg-amber-400 text-black font-bold px-5 py-2 sm:px-6 sm:py-3 rounded-3xl hover:bg-amber-500 transition"
+            onClick={() => navigate("/findRoommate")}
+          >
             Start Your Search
           </button>
         </div>

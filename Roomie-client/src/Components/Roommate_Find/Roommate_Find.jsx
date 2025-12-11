@@ -1,12 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import { AuthContext } from "../../Context/AuthContext";
 
 const Roommate_Find = () => {
   const data = useLoaderData();
   const { user } = useContext(AuthContext);
+  const [gender, setGender] = useState();
 
-  const roommates = data.filter((roommate) => roommate.email !== user?.email);
+  useEffect(() => {
+    const fetchUserPhoto = async () => {
+      if (user?.email) {
+        try {
+          const res = await fetch("http://localhost:3000/userInfo");
+          const data = await res.json();
+          const matchedUser = data.find((u) => u.email === user.email);
+          if (matchedUser) {
+            setGender(matchedUser.gender);
+          }
+        } catch (err) {
+          console.error("Error fetching user info:", err);
+        }
+      }
+    };
+    fetchUserPhoto();
+  }, [user]);
+
+  const roommates = data.filter(
+    (roommate) => roommate.email !== user?.email && roommate.gender === gender
+  );
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen max-w-[80%] mx-auto mt-[2%] rounded-2xl">

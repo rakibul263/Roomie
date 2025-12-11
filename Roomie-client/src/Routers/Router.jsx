@@ -5,6 +5,8 @@ import Register from "../Components/Register/Register";
 import Login from "../Components/Login/Login";
 import Roommate_Find from "../Components/Roommate_Find/Roommate_Find";
 import Join_As_Roommate from "../Components/Join_As_Roommate/Join_As_Roommate";
+import PrivateRoute from "./PrivateRoute";
+import Error from "../Components/Error/Error";
 
 export const router = createBrowserRouter([
   {
@@ -24,14 +26,26 @@ export const router = createBrowserRouter([
         Component: Login,
       },
       {
+        path: "/*",
+        Component: Error,
+      },
+      {
         path: "findRoommate",
         loader: () => fetch("http://localhost:3000/roommate"),
-        Component: Roommate_Find,
+        element: (
+          <PrivateRoute>
+            <Roommate_Find></Roommate_Find>
+          </PrivateRoute>
+        ),
       },
       {
         path: "JoinAsRoommate",
         loader: () => fetch("http://localhost:3000/userInfo"),
-        Component: Join_As_Roommate,
+        element: (
+          <PrivateRoute>
+            <Join_As_Roommate></Join_As_Roommate>
+          </PrivateRoute>
+        ),
       },
     ],
   },
