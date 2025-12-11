@@ -62,7 +62,7 @@ const Join_As_Roommate = () => {
   return (
     <div className="min-h-screen flex items-center justify-center p-6">
       <div className="w-full max-w-2xl bg-white/90 backdrop-blur-md p-10 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.15)]">
-        <h2 className="text-3xl font-bold text-center mb-8 text-[#CA8A5E]">
+        <h2 className="text-3xl font-bold text-center mb-8 text-[#CA8A5E] flavors-regular">
           Join As a Roommate
         </h2>
 

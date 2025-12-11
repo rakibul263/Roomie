@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData } from "react-router";
+import { AuthContext } from "../../Context/AuthContext";
 
 const Roommate_Find = () => {
   const data = useLoaderData();
+  const { user } = useContext(AuthContext);
+
+  const roommates = data.filter((roommate) => roommate.email !== user?.email);
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen max-w-[80%] mx-auto mt-[2%] rounded-2xl">
@@ -11,7 +15,7 @@ const Roommate_Find = () => {
       </h1>
 
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {data.map((roommate) => (
+        {roommates.map((roommate) => (
           <div
             key={roommate._id}
             className="bg-white rounded-2xl shadow-lg overflow-hidden mx-auto w-4/5 hover:shadow-2xl transition-shadow duration-300"
