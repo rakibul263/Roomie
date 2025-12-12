@@ -7,45 +7,82 @@ import Roommate_Find from "../Components/Roommate_Find/Roommate_Find";
 import Join_As_Roommate from "../Components/Join_As_Roommate/Join_As_Roommate";
 import PrivateRoute from "./PrivateRoute";
 import Error from "../Components/Error/Error";
+import Details from "../Components/Details/Details";
+import MyList from "../MyList/MyList";
+import Profile from "../Components/Profile/Profile";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    Component: Home,
+    element: <Home />, // 🔥 Component → element fixed
     children: [
       {
         index: true,
-        Component: Hero,
+        element: <Hero />,
       },
       {
         path: "register",
-        Component: Register,
+        element: <Register />,
       },
       {
         path: "login",
-        Component: Login,
+        element: <Login />,
       },
+
       {
-        path: "/*",
-        Component: Error,
+        path: "profile",
+        loader: () => fetch("http://localhost:3000/roommate"),
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
       },
+
+      {
+        path: "details/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/roommate/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <Details />
+          </PrivateRoute>
+        ),
+      },
+
+      {
+        path: "mylist",
+        loader: () => fetch("http://localhost:3000/mylist"),
+        element: (
+          <PrivateRoute>
+            <MyList />
+          </PrivateRoute>
+        ),
+      },
+
       {
         path: "findRoommate",
         loader: () => fetch("http://localhost:3000/roommate"),
         element: (
           <PrivateRoute>
-            <Roommate_Find></Roommate_Find>
+            <Roommate_Find />
           </PrivateRoute>
         ),
       },
+
       {
         path: "JoinAsRoommate",
         loader: () => fetch("http://localhost:3000/userInfo"),
         element: (
           <PrivateRoute>
-            <Join_As_Roommate></Join_As_Roommate>
+            <Join_As_Roommate />
           </PrivateRoute>
         ),
+      },
+
+      {
+        path: "/*",
+        element: <Error />,
       },
     ],
   },

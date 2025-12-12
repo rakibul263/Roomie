@@ -2,9 +2,9 @@ import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router";
 import logo from "../../assets/roomie.png";
 import "./Navbar.css";
-// import img from "../../assets/img.png";
 import { AuthContext } from "../../Context/AuthContext";
 import { useState, useEffect } from "react";
+import { Link } from "react-router";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -14,9 +14,10 @@ const Navbar = () => {
   const handleAuth = () => {
     if (user) {
       userSignOut();
-    } else {
-      navigate("/login");
     }
+  };
+  const handleLogin = () => {
+    navigate("/login");
   };
 
   useEffect(() => {
@@ -54,21 +55,18 @@ const Navbar = () => {
           Join As Roommate
         </NavLink>
       </li>
-      <li>
-        <NavLink to="/browse-listing" className="nav-item">
-          Browse Listing
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/my-listing" className="nav-item">
-          My Listing
-        </NavLink>
-      </li>
+      {user && (
+        <li>
+          <NavLink to="/mylist" className="nav-item">
+            My Listing
+          </NavLink>
+        </li>
+      )}
     </>
   );
   return (
     <div>
-      <div className="navbar bg-base-100 shadow-sm max-w-[80%] mx-auto">
+      <div className="navbar bg-base-100 shadow-sm max-w-[80%] mx-auto fixed top-0 left-1/2 transform -translate-x-1/2 z-50 rounded-b-3xl border-b-3 border-[#CA8A5E]">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -102,44 +100,53 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              {user && (
-                <div className="w-10 rounded-full">
-                  <img alt="Tailwind CSS Navbar component" src={photoUrl} />
+            {user && (
+              <div className="relative group">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar"
+                >
+                  <div className="w-10 rounded-full">
+                    <img alt="User Avatar" src={photoUrl} />
+                  </div>
                 </div>
-              )}
-            </div>
+
+                <div className="z-20 absolute left-1/2 transform -translate-x-1/2 -bottom-16 bg-gray-800 text-white text-sm px-3 py-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                  <p className="text-xs">{user.email}</p>
+                </div>
+              </div>
+            )}
+
             {user && (
               <ul
                 tabIndex="-1"
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
                 <li>
-                  <a className="justify-between">
+                  <Link to="/profile" className="justify-between">
                     Profile
                     <span className="badge">New</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a>Settings</a>
-                </li>
-                <li>
-                  <a>Logout</a>
+                  <a onClick={handleAuth}>Logout</a>
                 </li>
               </ul>
             )}
           </div>
         </div>
-        <button
-          className="btn mx-5 bg-[#CA8A5E] text-white rounded-2xl"
-          onClick={handleAuth}
-        >
-          {user ? `SignOut` : `Login`}
-        </button>
+        {user ? (
+          " "
+        ) : (
+          <button
+            className="btn mx-5 bg-[#CA8A5E] text-white rounded-2xl"
+            onClick={handleLogin}
+          >
+            {/* {user ? `SignOut` : `Login`} */}
+            Login
+          </button>
+        )}
       </div>
     </div>
   );

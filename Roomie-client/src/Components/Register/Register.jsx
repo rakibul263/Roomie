@@ -89,6 +89,22 @@ const Register = () => {
 
           <div>
             <label className="block mb-1 font-semibold text-gray-700">
+              Gender
+            </label>
+            <select
+              name="gender"
+              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#CA8A5E] focus:outline-none"
+              required
+            >
+              <option value="">Select Gender</option>
+              <option>Male</option>
+              <option>Female</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block mb-1 font-semibold text-gray-700">
               Photo URL
             </label>
             <input

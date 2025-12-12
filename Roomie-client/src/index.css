@@ -17,3 +17,8 @@
 * {
   font-family: "Lato", sans-serif;
 }
+body,
+#__next, /* Next.js users */
+#root {
+  @apply bg-gradient-to-br from-[#fef9f0] to-[#ffe7c4] min-h-screen;
+}

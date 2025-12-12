@@ -41,8 +41,8 @@ const Login = () => {
   };
 
   return (
-    <div className="md:mt-[9%] flex items-center justify-center p-6">
-      <div className="w-full max-w-md bg-white/90 backdrop-blur-md p-10 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.15)]">
+    <div className="min-h-screen mx-auto  flex items-center justify-center p-6">
+      <div className="w-full max-w-md bg-white backdrop-blur-md p-10 rounded-3xl shadow-[0_8px_30px_rgba(0,0,0,0.15)]">
         <h2 className="text-3xl font-bold text-center mb-8 tracking-wide flavors-regular text-[#CA8A5E]">
           Login Your Account
         </h2>
