@@ -96,57 +96,7 @@ const Register = () => {
               name="photo"
               className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#CA8A5E] focus:outline-none"
               placeholder="Enter your Photo URL"
-            />
-          </div>
-
-          <div>
-            <label className="block mb-1 font-semibold text-gray-700">
-              Age
-            </label>
-            <input
-              type="number"
-              name="age"
-              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#CA8A5E] focus:outline-none"
-              placeholder="Your age"
-            />
-          </div>
-
-          <div>
-            <label className="block mb-1 font-semibold text-gray-700">
-              Gender
-            </label>
-            <select
-              name="gender"
-              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#CA8A5E] focus:outline-none"
-            >
-              <option>Select Gender</option>
-              <option>Male</option>
-              <option>Female</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div>
-            <label className="block mb-1 font-semibold text-gray-700">
-              Preferred Location
-            </label>
-            <input
-              type="text"
-              name="location"
-              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#CA8A5E] focus:outline-none"
-              placeholder="Area you want to live in"
-            />
-          </div>
-
-          <div>
-            <label className="block mb-1 font-semibold text-gray-700">
-              Monthly Budget (BDT)
-            </label>
-            <input
-              type="number"
-              name="budget"
-              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#CA8A5E] focus:outline-none"
-              placeholder="Your budget"
+              required
             />
           </div>
 
@@ -159,20 +109,9 @@ const Register = () => {
               name="password"
               className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#CA8A5E] focus:outline-none"
               placeholder="Enter your password"
+              pattern="(?=.*[a-z])(?=.*[A-Z]).{6,}"
               required
             />
-          </div>
-
-          <div>
-            <label className="block mb-1 font-semibold text-gray-700">
-              Lifestyle Preferences
-            </label>
-            <textarea
-              name="lifestyle"
-              className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#CA8A5E] focus:outline-none"
-              rows="3"
-              placeholder="Write about your lifestyle, habits, etc."
-            ></textarea>
           </div>
 
           <button

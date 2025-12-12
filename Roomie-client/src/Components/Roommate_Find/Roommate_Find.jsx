@@ -39,9 +39,8 @@ const Roommate_Find = () => {
         {roommates.map((roommate) => (
           <div
             key={roommate._id}
-            className="bg-white rounded-2xl shadow-lg overflow-hidden mx-auto w-4/5 hover:shadow-2xl transition-shadow duration-300"
+            className="bg-white rounded-2xl shadow-lg overflow-hidden mx-auto w-4/5 hover:shadow-2xl transition-shadow duration-300 border-r-4 border-amber-600"
           >
-            {/* Photo */}
             <div className="h-64 overflow-hidden">
               <img
                 src={roommate.photo}
@@ -49,33 +48,34 @@ const Roommate_Find = () => {
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
             </div>
-
-            {/* Content */}
             <div className="p-5">
               <h2 className="text-2xl font-semibold text-gray-900 mb-2">
                 {roommate.name}
               </h2>
               <p className="text-gray-600 mb-1">
-                <span className="font-medium">Age:</span> {roommate.age}
+                <span className="font-bold">Age:</span> {roommate.age}
               </p>
               <p className="text-gray-600 mb-1">
-                <span className="font-medium">Gender:</span> {roommate.gender}
+                <span className="font-bold">Gender:</span> {roommate.gender}
               </p>
               <p className="text-gray-600 mb-1">
-                <span className="font-medium">Location:</span>{" "}
-                {roommate.location}
+                <span className="font-bold">Location:</span> {roommate.location}
               </p>
-              <p className="text-gray-600 mb-3">
-                <span className="font-medium">Budget:</span> BDT{" "}
-                {roommate.budget}
+              <p className="text-gray-600 mb-1">
+                <span className="font-bold">Room Type:</span>{" "}
+                {roommate.roomType}
+              </p>
+              <p className=" mb-3 font-bold text-green-900">
+                <span>Budget:</span> BDT {roommate.budget}
               </p>
             </div>
 
-            <div className="pb-5 text-center">
-              <button
-                className="px-6 py-2 font-medium text-white rounded-lg shadow-md"
-                style={{ backgroundColor: "#CA8A5E" }}
-              >
+            <div className="pb-5 text-center flex justify-center gap-4">
+              <button className="px-6 py-2 font-medium text-white rounded-lg shadow-md transition-all bg-[#CA8A5E] hover:bg-amber-600 hover:cursor-pointer">
+                Add to List
+              </button>
+
+              <button className="px-6 py-2 font-medium text-white rounded-lg shadow-md transition-all bg-[#CA8A5E]  hover:bg-amber-600 hover:cursor-pointer">
                 View Details
               </button>
             </div>

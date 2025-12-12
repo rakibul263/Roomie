@@ -26,7 +26,7 @@ const Join_As_Roommate = () => {
     fetchUserPhoto();
   }, [user]);
 
-  const { name, photo, age, email, gender, location, budget, lifestyle } = mate;
+  const { name, email, photo } = mate;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -115,7 +115,6 @@ const Join_As_Roommate = () => {
               type="number"
               name="age"
               className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#CA8A5E] focus:outline-none"
-              defaultValue={age}
               required
             />
           </div>
@@ -127,7 +126,6 @@ const Join_As_Roommate = () => {
             <select
               name="gender"
               className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#CA8A5E] focus:outline-none"
-              defaultValue={gender}
               required
             >
               <option value="">Select Gender</option>
@@ -139,13 +137,29 @@ const Join_As_Roommate = () => {
 
           <div>
             <label className="block mb-1 font-semibold text-gray-700">
+              Room Type
+            </label>
+            <select
+              name="roomType"
+              className="w-full p-3 border rounded-xl focus:ring-2 focus:ring-[#CA8A5E]"
+              required
+            >
+              <option value="">Choose Room Type</option>
+              <option>Single</option>
+              <option>Shared</option>
+              <option>Private</option>
+              <option>Studio</option>
+            </select>
+          </div>
+
+          <div>
+            <label className="block mb-1 font-semibold text-gray-700">
               Preferred Location
             </label>
             <input
               type="text"
               name="location"
               className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#CA8A5E] focus:outline-none"
-              defaultValue={location}
               required
             />
           </div>
@@ -158,7 +172,6 @@ const Join_As_Roommate = () => {
               type="number"
               name="budget"
               className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#CA8A5E] focus:outline-none"
-              defaultValue={budget}
               required
             />
           </div>
@@ -170,8 +183,8 @@ const Join_As_Roommate = () => {
             <textarea
               name="lifestyle"
               className="w-full p-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#CA8A5E] focus:outline-none"
+              placeholder="Pets, Smoking, Night Owl etc"
               rows="3"
-              defaultValue={lifestyle}
               required
             ></textarea>
           </div>
