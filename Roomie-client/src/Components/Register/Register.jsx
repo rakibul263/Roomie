@@ -25,7 +25,7 @@ const Register = () => {
           lastSignInTime: result.user?.metadata?.lastSignInTime,
         };
 
-        fetch("http://localhost:3000/userInfo", {
+        fetch("https://roomie-server-six.vercel.app/userInfo", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify(userProfile),

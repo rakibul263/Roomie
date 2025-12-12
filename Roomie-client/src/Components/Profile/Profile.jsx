@@ -37,7 +37,7 @@ const Profile = () => {
       const { _id, email, ...dataToUpdate } = formData;
 
       const response = await fetch(
-        `http://localhost:3000/roommate/${res._id}`,
+        `https://roomie-server-six.vercel.app/roommate/${res._id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

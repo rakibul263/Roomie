@@ -19,7 +19,9 @@ const Roommate_Find = () => {
       if (!user?.email) return;
 
       try {
-        const res = await fetch("http://localhost:3000/userInfo");
+        const res = await fetch(
+          "https://roomie-server-six.vercel.app/userInfo"
+        );
         const users = await res.json();
         const matchedUser = users.find((u) => u.email === user.email);
 

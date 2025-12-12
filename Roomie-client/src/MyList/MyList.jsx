@@ -23,9 +23,12 @@ const MyList = () => {
 
     if (result.isConfirmed) {
       try {
-        const res = await fetch(`http://localhost:3000/mylist/${id}`, {
-          method: "DELETE",
-        });
+        const res = await fetch(
+          `https://roomie-server-six.vercel.app/mylist/${id}`,
+          {
+            method: "DELETE",
+          }
+        );
 
         if (res.ok) {
           Swal.fire("Deleted!", "Your item has been deleted.", "success");

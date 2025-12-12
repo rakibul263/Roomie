@@ -38,7 +38,7 @@ const Details = () => {
   useEffect(() => {
     const checkIfAdded = async () => {
       try {
-        const res = await fetch("http://localhost:3000/mylist");
+        const res = await fetch("https://roomie-server-six.vercel.app/mylist");
         const list = await res.json();
         const match = list.find((item) => item.email === user.email);
         if (match) {
@@ -71,7 +71,7 @@ const Details = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:3000/mylist", {
+      const res = await fetch("https://roomie-server-six.vercel.app/mylist", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(Info),

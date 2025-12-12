@@ -12,7 +12,9 @@ const Join_As_Roommate = () => {
     const fetchUserPhoto = async () => {
       if (user?.email) {
         try {
-          const res = await fetch("http://localhost:3000/userInfo");
+          const res = await fetch(
+            "https://roomie-server-six.vercel.app/userInfo"
+          );
           const data = await res.json();
           const matchedUser = data.find((u) => u.email === user.email);
           if (matchedUser) {
@@ -36,7 +38,7 @@ const Join_As_Roommate = () => {
     data.email = email;
 
     try {
-      const res = await fetch("http://localhost:3000/roommate", {
+      const res = await fetch("https://roomie-server-six.vercel.app/roommate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

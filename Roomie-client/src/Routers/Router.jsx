@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
 
       {
         path: "profile",
-        loader: () => fetch("http://localhost:3000/roommate"),
+        loader: () => fetch("https://roomie-server-six.vercel.app/roommate"),
         element: (
           <PrivateRoute>
             <Profile />
@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
       {
         path: "details/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/roommate/${params.id}`),
+          fetch(`https://roomie-server-six.vercel.app/roommate/${params.id}`),
         element: (
           <PrivateRoute>
             <Details />
@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
 
       {
         path: "mylist",
-        loader: () => fetch("http://localhost:3000/mylist"),
+        loader: () => fetch("https://roomie-server-six.vercel.app/mylist"),
         element: (
           <PrivateRoute>
             <MyList />
@@ -62,7 +62,7 @@ export const router = createBrowserRouter([
 
       {
         path: "findRoommate",
-        loader: () => fetch("http://localhost:3000/roommate"),
+        loader: () => fetch("https://roomie-server-six.vercel.app/roommate"),
         element: (
           <PrivateRoute>
             <Roommate_Find />
@@ -72,7 +72,7 @@ export const router = createBrowserRouter([
 
       {
         path: "JoinAsRoommate",
-        loader: () => fetch("http://localhost:3000/userInfo"),
+        loader: () => fetch("https://roomie-server-six.vercel.app/userInfo"),
         element: (
           <PrivateRoute>
             <Join_As_Roommate />
