@@ -1,11 +1,14 @@
-import React from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
-import { FaTrash, FaInfoCircle } from "react-icons/fa";
+import React, { useContext } from "react";
+import { useLoaderData } from "react-router-dom";
+import { FaTrash } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Context/AuthContext";
 
 const MyList = () => {
   const data = useLoaderData();
-  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+
+  const filteredData = data.filter((item) => item.userEmail === user.email);
 
   const handleDelete = async (id) => {
     const result = await Swal.fire({
@@ -38,13 +41,13 @@ const MyList = () => {
   };
 
   return (
-    <div className="flex justify-center p-6  min-h-screen max-w-[80%] mx-auto mt-15">
-      <div className="w-full  bg-white p-6 rounded-2xl shadow-xl overflow-x-auto">
-        <h2 className="text-2xl font-bold mb-6 text-[#CA8A5E] flavors-regular text-center ">
+    <div className="flex justify-center p-6 min-h-screen max-w-[80%] mx-auto mt-15">
+      <div className="w-full bg-white p-6 rounded-2xl shadow-xl overflow-x-auto">
+        <h2 className="text-2xl font-bold mb-6 text-[#CA8A5E] flavors-regular text-center">
           My List
         </h2>
 
-        <table className="min-w-full table-auto border border-gray-200 rounded-2xl ">
+        <table className="min-w-full table-auto border border-gray-200 rounded-2xl">
           <thead>
             <tr className="bg-[#CA8A5E] text-white text-left">
               <th className="py-3 px-4 rounded-tl-xl">Name</th>
@@ -56,8 +59,8 @@ const MyList = () => {
           </thead>
 
           <tbody>
-            {data && data.length > 0 ? (
-              data.map((item) => (
+            {filteredData.length > 0 ? (
+              filteredData.map((item) => (
                 <tr
                   key={item._id}
                   className="border-b border-gray-200 hover:bg-gray-50 transition"

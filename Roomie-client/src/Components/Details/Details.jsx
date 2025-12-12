@@ -13,9 +13,10 @@ import { AuthContext } from "../../Context/AuthContext";
 import Swal from "sweetalert2";
 
 const Details = () => {
-  const { isDisabled, setIsDisabled } = useContext(AuthContext);
+  const { isDisabled, setIsDisabled, user } = useContext(AuthContext);
   const data = useLoaderData();
   const navigate = useNavigate();
+  const userEmail = user.email;
 
   const [alreadyAdded, setAlreadyAdded] = useState(false);
 
@@ -39,7 +40,7 @@ const Details = () => {
       try {
         const res = await fetch("http://localhost:3000/mylist");
         const list = await res.json();
-        const match = list.find((item) => item.email === email);
+        const match = list.find((item) => item.email === user.email);
         if (match) {
           setAlreadyAdded(true);
           setIsDisabled(true);
@@ -54,6 +55,7 @@ const Details = () => {
   const handleList = async () => {
     setIsDisabled(true);
     const Info = {
+      userEmail,
       name,
       age,
       gender,
@@ -94,7 +96,7 @@ const Details = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center p-4 bg-gray-100">
+    <div className="min-h-screen flex justify-center items-center p-4 pt-20">
       <div className="w-full max-w-3xl bg-white p-6 sm:p-8 shadow-xl rounded-2xl relative">
         <button
           onClick={() => navigate(-1)}
@@ -112,7 +114,6 @@ const Details = () => {
           <p className="text-gray-600 text-sm sm:text-base">{email}</p>
         </div>
 
-        {/* DETAILS GRID */}
         <div className="mt-8 grid grid-cols-1 gap-4 sm:gap-5">
           <div className="flex items-center gap-3 text-gray-800">
             <FaUser className="text-[#CA8A5E] text-xl" />
@@ -178,6 +179,7 @@ const Details = () => {
           </div>
         </div>
 
+        {/* ADD TO LIST BUTTON */}
         <button
           disabled={isDisabled || alreadyAdded}
           onClick={handleList}
